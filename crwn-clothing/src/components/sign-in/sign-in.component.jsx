@@ -19,10 +19,10 @@ class SingIn extends React.Component {
     const { email, password } = this.state;
 
     try {
-      await auth.createUserWithEmailAndPassword(email, password);
+      await auth.signInWithEmailAndPassword(email, password);
       this.setState({ email: "", password: "" });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -37,7 +37,7 @@ class SingIn extends React.Component {
         <h2>I Already Have an Account</h2>
         <span>Sing In with your Email and Password</span>
 
-        <form onSubmit={this.handleSubmit}>
+        <form className="sign-in-form">
           <FormInput
             name="email"
             type="email"
@@ -55,7 +55,7 @@ class SingIn extends React.Component {
             required
           />
           <div className="buttons">
-            <CustomButton>Sign In</CustomButton>
+            <CustomButton onClick={this.handleSubmit}>Sign In</CustomButton>
             <CustomButton onClick={signInWithGoogle} isGoogleSignIn>
               Sign In with Google
             </CustomButton>

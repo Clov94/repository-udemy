@@ -30,12 +30,12 @@ class SignUp extends React.Component {
         password
       );
       await createUserProfileDocument(user, { displayName });
-      this.state = {
-        displayName: "",
+      this.setState({
         email: "",
         password: "",
+        displayName: "",
         confirmPassword: ""
-      };
+      });
     } catch (error) {
       console.error(error);
     }
